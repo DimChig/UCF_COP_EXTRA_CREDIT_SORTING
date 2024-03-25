@@ -18,7 +18,7 @@ void DeAlloc(void* ptr)
 {
 	size_t* pSz = (size_t*)ptr - 1;
 	extraMemoryAllocated -= *pSz;
-	//printf("Extra memory deallocated, size: %ld\n", *pSz);
+	//printf("Extra memory deallocated, size: %ld\n", *pSz) //commented this line to avoid console spam
 	free((size_t*)ptr - 1);
 }
 
@@ -70,7 +70,7 @@ void heapSort(int arr[], int l, int r) {
         // Move current root to end
         swap(&arr[0], &arr[i]);
 
-        // call max heapify on the reduced heap
+        // Call max heapify on the reduced heap
         heapify(arr, i, 0);
     }
 }
@@ -144,8 +144,7 @@ void insertionSort(int* pData, int n)
         int key = pData[step];
         int j = step - 1;
 
-        // Compare key with each element on the left of it until an element smaller than
-        // it is found.
+        // Compare key with each element on the left of it until an element smaller than it is found.
         // For descending order, change key<array[j] to key>array[j].
         while (key < pData[j] && j >= 0) {
             pData[j + 1] = pData[j];
@@ -170,10 +169,8 @@ void bubbleSort(int* pData, int n)
             }
         }
 
-        // If no two elements were swapped by inner loop,
-        // then break
-        if (swapped == 0)
-            break;
+        // If no two elements were swapped by inner loop, then break
+        if (swapped == 0) break;
     }
 }
 
@@ -181,9 +178,7 @@ void bubbleSort(int* pData, int n)
 // extraMemoryAllocated counts bytes of extra memory allocated
 void selectionSort(int* pData, int n)
 {
-
     int i, j, min_idx;
-
     // One by one move boundary of unsorted subarray
     for (i = 0; i < n - 1; i++) {
         // Find the minimum element in unsorted array
@@ -191,12 +186,9 @@ void selectionSort(int* pData, int n)
         for (j = i + 1; j < n; j++)
             if (pData[j] < pData[min_idx])
                 min_idx = j;
-
         // Swap the found minimum element with the first
-        // element
         swap(&pData[min_idx], &pData[i]);
     }
-
 }
 
 // parses input file to an integer array
